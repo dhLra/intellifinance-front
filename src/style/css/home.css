@@ -1,0 +1,20 @@
+.col-statics{
+    border-radius: 5px;
+    background-color: #fff;
+}
+
+.col-icon-green{
+    background-color: green;
+    border-radius: 100vh;
+    color: #fff;
+}
+.col-icon-red{
+    background-color: red;
+    border-radius: 100vh;
+    color: #fff;
+}
+.col-icon-blue{
+    background-color: blue;
+    border-radius: 100vh;
+    color: #fff;
+}
