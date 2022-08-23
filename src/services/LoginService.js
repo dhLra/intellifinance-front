@@ -14,7 +14,7 @@ export function getUserLocalStorage() {
     return user;
 }
 
-const url = "http://localhost/login-react/api/Login.php";
+const url = "http://localhost/intellifinance/api/Login.php";
 
 export const LoginRequest = async (email, pass) => {
 
