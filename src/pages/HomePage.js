@@ -4,6 +4,8 @@ import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMoneyBillTransfer, faMoneyBill, faMoneyBillWave, faBurger, faCar, faCartShopping, faBriefcaseMedical } from "@fortawesome/free-solid-svg-icons";
 
+import Calendar from "../components/Calendar";
+
 import '../style/css/home.css';
 
 const HomePage = () => {
@@ -53,7 +55,7 @@ const HomePage = () => {
             </div>
 
             <div className="row d-flex text-center">
-                <div className="col col-home mt-4 me-1 col-grafics align-self-center justify-self-center">
+                <div className="col pb-2 pt-2 col-home mt-4 me-1 col-grafics align-self-center justify-self-center">
                     <h4>Como você usou até agora</h4>
                     <p>O gráfico é referente ao período 22/08/2022. </p>
 
@@ -63,7 +65,7 @@ const HomePage = () => {
                         </div>
                         <div className="col">
                             <div className="progress">
-                                <div className="progress-bar" role="progressbar" style={{ width: "74%" }} aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                <div className="progress-bar" role="progressbar" style={{ width: "86%" }} aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                             </div>
                         </div>
                     </div>
@@ -74,7 +76,7 @@ const HomePage = () => {
                         </div>
                         <div className="col">
                             <div className="progress">
-                                <div className="progress-bar" role="progressbar" style={{ width: "74%" }} aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                <div className="progress-bar" role="progressbar" style={{ width: "10%" }} aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                             </div>
                         </div>
                     </div>
@@ -85,7 +87,7 @@ const HomePage = () => {
                         </div>
                         <div className="col">
                             <div className="progress">
-                                <div className="progress-bar" role="progressbar" style={{ width: "74%" }} aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                <div className="progress-bar" role="progressbar" style={{ width: "76%" }} aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                             </div>
                         </div>
                     </div>
@@ -96,15 +98,16 @@ const HomePage = () => {
                         </div>
                         <div className="col">
                             <div className="progress">
-                                <div className="progress-bar" role="progressbar" style={{ width: "74%" }} aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                <div className="progress-bar" role="progressbar" style={{ width: "52%" }} aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                             </div>
                         </div>
                     </div>
 
                 </div>
-                <div className="col col-home mt-4 ms-1 col-calendar">
-                    <h4>Escolha a data para filtar</h4>
-                    <p>Escolha uma data para filtar o gráfico ao lado. </p>
+                <div className="col pb-2 pt-2 col-home mt-4 ms-1 col-calendar">
+                    <h4>Escolha a data para filtrar</h4>
+                    <p>Escolha uma data para filtrar o gráfico ao lado. </p>
+                    <Calendar/>
                 </div>
             </div>
 

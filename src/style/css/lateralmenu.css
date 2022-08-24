@@ -1,0 +1,13 @@
+.lateralmenu {
+    background-color: #006aee;
+    z-index: 1;
+    position: absolute;
+    height: 100vh;
+    width: 15vw;
+    color: #fff
+}
+
+.btn-lateral .col, .col-2{
+    color:#fff
+}
+

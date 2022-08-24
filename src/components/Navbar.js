@@ -1,25 +1,33 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUser, faRightFromBracket, faSun } from "@fortawesome/free-solid-svg-icons";
+import { faUser, faRightFromBracket, faSun, faAnglesRight } from "@fortawesome/free-solid-svg-icons";
 
 import { useAuth } from "../services/useAuth";
+import LateralMenu from "./LateralMenu";
 
 const Navbar = () => {
     const auth = useAuth();
+    const [display, setDisplay] = useState("none");
+
+    const showLateralMenu = () => {
+        if (display === "none") {
+            setDisplay("flex");
+        } else {
+            setDisplay("none");
+        }
+    }
 
     return (
-        <nav className="navbar navbar-expand-lg">
-            <div className="container-fluid">
-                <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                    <span className="navbar-toggler-icon"></span>
-                </button>
-                <div className="collapse navbar-collapse" id="navbarNavDropdown">
-                <ul className="navbar-nav me-auto mb-1 mb-lh-0" style={{ flex: "1" }}>
+        <>
+            <nav className="navbar navbar-expand-lg">
+                <div className="container-fluid">
+                    <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                        <span className="navbar-toggler-icon"></span>
+                    </button>
+                    <div className="collapse navbar-collapse" id="navbarNavDropdown">
+                        <ul className="navbar-nav me-auto mb-1 mb-lh-0" style={{ flex: "1" }}>
                             <li className="nav-item">
-                                <Link to={"/"} className="nav-link ms-3" >
-                                    <a className="navbar-brand" href="/">Intellifinance</a>
-                                </Link>
+                                <button className="btn navbar-brand" onClick={showLateralMenu} ><FontAwesomeIcon icon={faAnglesRight} transform="grow-1" /></button>
                             </li>
                         </ul>
                         <ul className="navbar-nav me-3 mb-lh-0">
@@ -43,9 +51,12 @@ const Navbar = () => {
                             </li>
 
                         </ul>
+                    </div>
                 </div>
-            </div>
-        </nav>
+            </nav>
+
+            <LateralMenu display={display} />
+        </>
     )
 }
 
