@@ -5,16 +5,19 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMoneyBillTransfer, faMoneyBill, faMoneyBillWave, faBurger, faCar, faCartShopping, faBriefcaseMedical } from "@fortawesome/free-solid-svg-icons";
 
 import Calendar from "../components/Calendar";
+import { getUserLocalStorage } from "../services/LoginService";
 
 import '../style/css/home.css';
 
 const HomePage = () => {
 
     const navigate = useNavigate();
+    const userData = getUserLocalStorage()
+    //setUser(a.token)
 
     return (
         <div className="container">
-            <h1 className='mt-3 mb-5'>Olá, Cliente!</h1>
+            <h1 className='mt-3 mb-5'>Olá, {userData.name}</h1>
             <div className="row mt-3 d-flex flex-row text-center ">
                 <div className="col col-statics col-home">
                     <div className="row">
@@ -107,12 +110,13 @@ const HomePage = () => {
                 <div className="col pb-2 pt-2 col-home mt-4 ms-1 col-calendar">
                     <h4>Escolha a data para filtrar</h4>
                     <p>Escolha uma data para filtrar o gráfico ao lado. </p>
-                    <Calendar/>
+                    <Calendar />
                 </div>
             </div>
 
 
             <button className="btn btn-primary my-5" onClick={() => navigate("/map")}> map </button>
+
         </div>
     )
 }

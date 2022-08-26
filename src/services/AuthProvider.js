@@ -18,7 +18,7 @@ export const AuthProvider = ({children}) => {
     async function authenticate(email, pass) {
         const res = await LoginRequest(email, pass);
 
-        const payload = { token: res.email };
+        const payload = { token: res.id_user, name: res.name, email: res.email };
 
         setUser(payload);
         setuserLocalStorage(payload);
