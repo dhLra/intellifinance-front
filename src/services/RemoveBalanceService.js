@@ -1,8 +1,8 @@
 import axios from "axios";
 
-const url = "http://localhost/intellifinance/api/PostAddBalance.php"
+const url = "http://localhost/intellifinance/api/PostRemoveBalance.php"
 
-export const addBalance  = async (userID, amount) => {
+export const removeBalance  = async (userID, amount) => {
 
     const res = await axios.post(url, {
         data:{

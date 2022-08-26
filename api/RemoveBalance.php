@@ -5,9 +5,9 @@ header('Access-Control-Allow-Origin: *');
 header("Content-Type: application/json");
 date_default_timezone_set('America/Sao_Paulo');
 
-class AddBalance extends Conn
+class RemoveBalance extends Conn
 {
-    public function AddBalance()
+    public function RemoveBalance()
     {
 
         $dataObject = array();
@@ -25,15 +25,18 @@ class AddBalance extends Conn
                 $UserAmount = $DataAmount->fetch(PDO::FETCH_ASSOC);
                 $CurrentAmount = $UserAmount['current_amount'];
 
-                $TotalAmount = $CurrentAmount + $paramAmount;
+                if ($CurrentAmount >= $paramAmount) {
+                    $TotalAmount = $CurrentAmount - $paramAmount;
+                    $RemoveAmount = $this->connBD()->prepare("UPDATE user_amount SET current_amount='$TotalAmount', modification_date='$paramDate' WHERE id_user = '$paramUserID'");
+                    $RemoveAmount->execute();
 
-                $AddAmount = $this->connBD()->prepare("UPDATE user_amount SET current_amount='$TotalAmount', modification_date='$paramDate' WHERE id_user = '$paramUserID'");
-                $AddAmount->execute();
-
-                $Movimentation = $this->connBD()->prepare("INSERT INTO user_movimentation (`id_user`, `amount`, `add_or_remove`, `date`) VAlUES ('$paramUserID', '$paramAmount', 'Add', '$paramDate')");
-                $Movimentation->execute();
+                    $Movimentation = $this->connBD()->prepare("INSERT INTO user_movimentation (`id_user`, `amount`, `add_or_remove`, `date`) VAlUES ('$paramUserID', '$paramAmount', 'Remove', '$paramDate')");
+                    $Movimentation->execute();
+                } else {
+                    echo json_encode('Saldo Insuficiente');
+                    die();
+                }
             }
-
             echo json_encode('Sucsses');
             die();
         } catch (Exception $e) {

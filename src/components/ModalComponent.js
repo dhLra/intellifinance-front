@@ -3,6 +3,7 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { Form } from "react-bootstrap";
 import { addBalance } from "../services/AddBalanceService";
+import { removeBalance } from "../services/RemoveBalanceService";
 import { getUserLocalStorage } from "../services/LoginService";
 
 import { useForm } from "react-hook-form";
@@ -15,6 +16,10 @@ const ModalComponent = (props) => {
 
     const Add = (e) => {
         addBalance(userData.token, parseInt(e.amount))
+    }
+
+    const Remove = (e) => {
+        removeBalance(userData.token, parseInt(e.amount))
     }
 
     const render = () => {
@@ -39,7 +44,7 @@ const ModalComponent = (props) => {
                             </div>
                         </Modal.Body>
                         <Modal.Footer>
-                            <Button type="submit">Enviar</Button>
+                            <Button type="submit" onClick={props.onHide}>Enviar</Button>
                             <Button onClick={props.onHide}>Cancelar</Button>
                         </Modal.Footer>
                     </Form>
@@ -58,17 +63,19 @@ const ModalComponent = (props) => {
                             Remover Saldo
                         </Modal.Title>
                     </Modal.Header>
-                    <Modal.Body>
-                        <div class="mb-3">
-                            <label htmlFor="exampleFormControlInput1" className="form-label mb-0">Digite o valor a ser retirado</label>
-                            <p className="mt-0">Disponível: 0000</p>
-                            <input type="text" className="form-control" />
-                        </div>
-                    </Modal.Body>
-                    <Modal.Footer>
-                        <Button onClick={() => { console.log('Enviou') }}>Enviar</Button>
-                        <Button onClick={props.onHide}>Cancelar</Button>
-                    </Modal.Footer>
+                    <Form onSubmit={handleSubmit(Remove)}>
+                        <Modal.Body>
+                            <div className="mb-3">
+                                <label htmlFor="exampleFormControlInput1" className="form-label mb-0">Digite o valor a ser retirado</label>
+                                <p className="mt-0">Disponível: 0000</p>
+                                <input type="text" className="form-control" {...register("amount")} />
+                            </div>
+                        </Modal.Body>
+                        <Modal.Footer>
+                            <Button type="submit" onClick={props.onHide}>Enviar</Button>
+                            <Button onClick={props.onHide}>Cancelar</Button>
+                        </Modal.Footer>
+                    </Form>
                 </Modal>
             )
         } else if (props.type === 'addSpend') {
@@ -93,7 +100,7 @@ const ModalComponent = (props) => {
                         <label htmlFor="exampleFormControlInput1" className="form-label">Valor de uma parcela</label>
                         <div className="input-group mb-3">
                             <span className="input-group-text">R$</span>
-                            <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)" />
+                            <input type="text" className="form-control" aria-label="Amount (to the nearest dollar)" />
                         </div>
                         <div className="mb-3">
                             <label htmlFor="exampleFormControlInput1" className="form-label">Selecionar categoria da dispesa</label>
@@ -145,7 +152,7 @@ const ModalComponent = (props) => {
                             </select>
                         </div>
                         <div className="mb-3">
-                            <label  htmlFor="exampleFormControlInput1" className="form-label">Fim das parcelas</label>
+                            <label htmlFor="exampleFormControlInput1" className="form-label">Fim das parcelas</label>
                             <select className="form-select form-select-sm" aria-label=".form-select-sm example">
                                 <option selected>Selecione o mês de Termino</option>
                                 <option value="Janeiro">Janeiro</option>
