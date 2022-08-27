@@ -4,3 +4,14 @@
     height: 7vh;
     box-shadow: -2px 5px 12px -4px rgba(0,0,0,0.81)
 }
+
+.navbar-nav{
+    color: #fff;
+}
+.nav-item a{ 
+    color: #fff;
+}
+
+.nav-item button{
+    color: #fff;
+}

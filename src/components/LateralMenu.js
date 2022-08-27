@@ -1,5 +1,5 @@
 import React from "react";
-import { faCirclePlus, faCircleMinus, faFileImport, faFileExport } from "@fortawesome/free-solid-svg-icons";
+import { faCirclePlus, faCircleMinus, faFileImport, faFileExport, faGear} from "@fortawesome/free-solid-svg-icons";
 
 import LateralMenuButton from "./LateralMenuButton";
 import LateralMenuDivision from "./LateralMenuDivision";
@@ -12,8 +12,7 @@ const LateralMenu = (props) => {
         <div className="lateralmenu text-center justify-content-center"
             style={{ display: props.display }}>
 
-            <div className="row flex-column">
-                <h1> Intellifinance </h1>
+            <div className="row flex-column mt-3">
 
                 <LateralMenuDivision title="Saldo" />
                 <LateralMenuButton icon={faCirclePlus} buttonLabel="Adicionar Saldo" param="addCredit" />
@@ -27,7 +26,8 @@ const LateralMenu = (props) => {
                 <LateralMenuButton icon={faFileImport} buttonLabel="Exportar CSV" />
                 <LateralMenuButton icon={faFileExport} buttonLabel="Importar CSV" />
 
-
+                <LateralMenuDivision title="Configurações" />
+                <LateralMenuButton icon={faGear} buttonLabel="Configurações de dispesas" />
 
             </div>
         </div>

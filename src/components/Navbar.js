@@ -26,7 +26,8 @@ const Navbar = () => {
                     </button>
                     <div className="collapse navbar-collapse" id="navbarNavDropdown">
                         <ul className="navbar-nav me-auto mb-1 mb-lh-0" style={{ flex: "1" }}>
-                            <li className="nav-item">
+                            <li className="nav-item d-flex text-center">
+                                <h2 className="ms-4"> Intellifinance </h2>
                                 <button className="btn navbar-brand" onClick={showLateralMenu} ><FontAwesomeIcon icon={faAnglesRight} transform="grow-1" /></button>
                             </li>
                         </ul>
