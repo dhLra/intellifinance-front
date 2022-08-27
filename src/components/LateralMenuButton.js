@@ -15,7 +15,7 @@ const LateralMenuButton = (props) => {
     }
 
     return (<>
-        <button className="btn btn-lateral d-flex flex-row text-start mb-1" data-bs-toggle="modal" onClick={() => setStates(props.param)}>
+        <button className="btn btn-lateral d-flex flex-row text-start mb-1 align-items-center justify-content-center" data-bs-toggle="modal" onClick={() => setStates(props.param)}>
             <div className="col-2"><FontAwesomeIcon icon={props.icon} transform="grow-10" /></div>
             <div className="col">{props.buttonLabel}</div>
         </button>

@@ -1,5 +1,4 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMoneyBillTransfer, faMoneyBill, faMoneyBillWave, faBurger, faCar, faCartShopping, faBriefcaseMedical } from "@fortawesome/free-solid-svg-icons";
@@ -8,12 +7,20 @@ import Calendar from "../components/Calendar";
 import { getUserLocalStorage } from "../services/LoginService";
 
 import '../style/css/home.css';
+import { getUserDataBalance } from "../services/GetUserDataBalance";
 
 const HomePage = () => {
 
-    const navigate = useNavigate();
+    useEffect(() => {
+        getUserDataBalance(userData.token).then((res) =>{
+            setUserDataBalance(res);
+        })
+     }, [])
+
+
     const userData = getUserLocalStorage()
-    //setUser(a.token)
+    const [userDataBalance, setUserDataBalance] = useState([])
+    console.log(userDataBalance)
 
     return (
         <div className="container">
@@ -27,7 +34,7 @@ const HomePage = () => {
                         <div className="col">
                             <h4 className="m-0 p-0">Saldo Atual</h4>
                             <hr className="m-0 mb-2 p-0"></hr>
-                            <h5>R$ 100.000,00</h5>
+                            <h5>R$ {userDataBalance.current_amount}</h5>
                         </div>
                     </div>
                 </div>
@@ -113,10 +120,6 @@ const HomePage = () => {
                     <Calendar />
                 </div>
             </div>
-
-
-            <button className="btn btn-primary my-5" onClick={() => navigate("/map")}> map </button>
-
         </div>
     )
 }
