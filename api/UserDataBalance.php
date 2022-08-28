@@ -15,15 +15,26 @@ class UserDataBalace extends Conn
 
         $paramUserID = $dataObject['data']['id_user'];
 
+        $TotalExpense = 0;
+
         try {
 
             $DataUserAmount = $this->connBD()->prepare("SELECT * FROM user_amount WHERE id_user = '$paramUserID'");
             $DataUserAmount->execute();
+
+            $DataUserExpense = $this->connBD()->prepare("SELECT * FROM user_expense WHERE id_user = '$paramUserID'");
+            $DataUserExpense->execute();
+
+            while($FetchExpense = $DataUserExpense->fetch(PDO::FETCH_ASSOC)){
+                $TotalExpense = $FetchExpense['installments_value'] + $TotalExpense;
+            }
             
             $DataBalance = $DataUserAmount ->fetch(PDO::FETCH_ASSOC);
             $userDataArray = [
                 "current_amount" => $DataBalance['current_amount'],
                 "modification_date" => $DataBalance['modification_date'],
+                "expense" => $TotalExpense,
+                "diference" =>  $DataBalance['current_amount'] - $TotalExpense,
                 "status" => '200'
             ];
 

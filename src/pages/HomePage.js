@@ -46,7 +46,7 @@ const HomePage = () => {
                         <div className="col">
                             <h4 className="m-0 p-0">Despesas</h4>
                             <hr className="m-0 mb-2 p-0"></hr>
-                            <h5>R$ 10.000,00</h5>
+                            <h5>R$ {userDataBalance.expense}</h5>
                         </div>
                     </div>
                 </div>
@@ -58,7 +58,7 @@ const HomePage = () => {
                         <div className="col">
                             <h4 className="m-0 p-0">Diferença</h4>
                             <hr className="m-0 mb-2 p-0"></hr>
-                            <h5>R$ 90.000,00</h5>
+                            <h5>R$ {userDataBalance.diference}</h5>
                         </div>
                     </div>
                 </div>
