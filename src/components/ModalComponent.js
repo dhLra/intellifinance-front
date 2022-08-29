@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { Form } from "react-bootstrap";
@@ -8,12 +8,21 @@ import { addFixedExpense } from "../services/AddFixedExpenseService";
 import { getUserLocalStorage } from "../services/LoginService";
 
 import { useForm } from "react-hook-form";
+import { getModalData } from "../services/GetModalData";
 
 
 const ModalComponent = (props) => {
 
     const { register, handleSubmit } = useForm();
     const userData = getUserLocalStorage();
+    const [data, setData] = useState([]);
+
+    useEffect(() => {
+        getModalData(userData.token).then((res) => {
+            setData(res)
+        })
+    }, [])
+
 
     const Add = (e) => {
         addBalance(userData.token, e.amount)
@@ -23,13 +32,13 @@ const ModalComponent = (props) => {
         removeBalance(userData.token, e.amount)
     }
     const AddFixedExpense = (e) => {
-       addFixedExpense(userData.token, 
-        e.factor, 
-        e.category, 
-        e.amount, 
-        e.expendNumber, 
-        e.monthStart, 
-        e.monthEnd)
+        addFixedExpense(userData.token,
+            e.factor,
+            e.category,
+            e.amount,
+            e.expendNumber,
+            e.monthStart,
+            e.monthEnd)
     }
 
     const render = () => {
@@ -77,7 +86,7 @@ const ModalComponent = (props) => {
                         <Modal.Body>
                             <div className="mb-3">
                                 <label htmlFor="exampleFormControlInput1" className="form-label mb-0">Digite o valor a ser retirado</label>
-                                <p className="mt-0">Disponível: 0000</p>
+                                <p className="mt-1 "><small>Disponível: {data.current_amount} </small></p>
                                 <input type="text" className="form-control" {...register("amount")} />
                             </div>
                         </Modal.Body>
@@ -109,7 +118,7 @@ const ModalComponent = (props) => {
                                 <div className="col">
                                     <div className="mb-3">
                                         <label htmlFor="exampleFormControlInput1" className="form-label">Fator da dispesa</label>
-                                        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Ex: Escola dos filhos; Microondas novo" {...register("factor")}/>
+                                        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Ex: Escola dos filhos; Microondas novo" {...register("factor")} />
                                     </div>
                                 </div>
 

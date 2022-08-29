@@ -20,7 +20,7 @@ const HomePage = () => {
 
     const userData = getUserLocalStorage()
     const [userDataBalance, setUserDataBalance] = useState([])
-    console.log(userDataBalance)
+    
 
     return (
         <div className="container">
