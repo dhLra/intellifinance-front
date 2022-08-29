@@ -25,22 +25,21 @@ class UserDataBalace extends Conn
             $DataUserExpense = $this->connBD()->prepare("SELECT * FROM user_expense WHERE id_user = '$paramUserID'");
             $DataUserExpense->execute();
 
-            while($FetchExpense = $DataUserExpense->fetch(PDO::FETCH_ASSOC)){
+            while ($FetchExpense = $DataUserExpense->fetch(PDO::FETCH_ASSOC)) {
                 $TotalExpense = $FetchExpense['installments_value'] + $TotalExpense;
             }
-            
-            $DataBalance = $DataUserAmount ->fetch(PDO::FETCH_ASSOC);
+
+            $DataBalance = $DataUserAmount->fetch(PDO::FETCH_ASSOC);
             $userDataArray = [
-                "current_amount" => $DataBalance['current_amount'],
+                "current_amount" => number_format($DataBalance['current_amount'], 2),
+                "expense" => number_format($TotalExpense, 2),
+                "diference" =>  number_format($DataBalance['current_amount'] - $TotalExpense, 2),
                 "modification_date" => $DataBalance['modification_date'],
-                "expense" => $TotalExpense,
-                "diference" =>  $DataBalance['current_amount'] - $TotalExpense,
                 "status" => '200'
             ];
 
             echo json_encode($userDataArray);
             die();
-
         } catch (Exception $e) {
             echo json_encode($e);
             die();
