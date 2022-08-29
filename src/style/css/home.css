@@ -11,18 +11,18 @@
 
 .col-icon-green{
     background-color: green;
-    border-radius: 100vh;
+    border-radius: 300px;
     color: #fff;
     width: 10px;
 }
 .col-icon-red{
     background-color: red;
-    border-radius: 100vh;
+    border-radius: 300px;
     color: #fff;
 }
 .col-icon-blue{
     background-color: blue;
-    border-radius: 100vh;
+    border-radius: 300px;
     color: #fff;
 }
 .col-grafics{

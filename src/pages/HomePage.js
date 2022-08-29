@@ -23,7 +23,7 @@ const HomePage = () => {
     
 
     return (
-        <div className="container">
+        <div className="container vh-100">
             <h1 className='mt-3 mb-5'>Olá, {userData.name}</h1>
             <div className="row mt-3 d-flex flex-row text-center ">
                 <div className="col col-statics col-home">

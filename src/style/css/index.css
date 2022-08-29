@@ -3,14 +3,9 @@
     margin: 0;
 }
 
-html,body, #root{
-    height: 100%;
-}
-
 body {
     /*background-image: url(../img/login_wallpaper.jpg); */
     background-color: #f0f1f5;
-    background-position: center;
-    background-size: 100%;
+
   }
 
