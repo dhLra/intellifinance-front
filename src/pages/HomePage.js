@@ -3,6 +3,8 @@ import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMoneyBillTransfer, faMoneyBill, faMoneyBillWave, faBurger, faCar, faCartShopping, faBriefcaseMedical } from "@fortawesome/free-solid-svg-icons";
 
+
+import ExpenseCategory from "../components/ExpenseCategory";
 import Calendar from "../components/Calendar";
 import { getUserLocalStorage } from "../services/LoginService";
 
@@ -12,15 +14,15 @@ import { getUserDataBalance } from "../services/GetUserDataBalance";
 const HomePage = () => {
 
     useEffect(() => {
-        getUserDataBalance(userData.token).then((res) =>{
+        getUserDataBalance(userData.token).then((res) => {
             setUserDataBalance(res);
         })
-     }, [])
+    }, [])
 
 
     const userData = getUserLocalStorage()
     const [userDataBalance, setUserDataBalance] = useState([])
-    
+
 
     return (
         <div className="container vh-100">
@@ -65,58 +67,22 @@ const HomePage = () => {
             </div>
 
             <div className="row d-flex text-center">
-                <div className="col pb-2 pt-2 col-home mt-4 me-1 col-grafics align-self-center justify-self-center">
-                    <h4>Como você usou até agora</h4>
-                    <p>O gráfico é referente ao período 22/08/2022. </p>
-
-                    <div className="row mb-2 align-items-center justify-content-center text-center">
-                        <div className="col-1">
-                            <FontAwesomeIcon icon={faBurger} />
-                        </div>
-                        <div className="col">
-                            <div className="progress">
-                                <div className="progress-bar" role="progressbar" style={{ width: "86%" }} aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                        </div>
+                <div className="col flex-colmun">
+                    <div className="col p-2 col-home mt-4 me-1 col-grafics align-self-center justify-self-center">
+                        <h4>Como você usou até agora</h4>
+                        <p>O gráfico é referente ao período 22/08/2022.</p>
+                        <ExpenseCategory icon={faBurger} />
+                        <ExpenseCategory icon={faCar} />
+                        <ExpenseCategory icon={faCartShopping} />
+                        <ExpenseCategory icon={faBriefcaseMedical} />
                     </div>
-
-                    <div className="row mb-2 align-items-center justify-content-center text-center">
-                        <div className="col-1">
-                            <FontAwesomeIcon icon={faCar} />
-                        </div>
-                        <div className="col">
-                            <div className="progress">
-                                <div className="progress-bar" role="progressbar" style={{ width: "10%" }} aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                        </div>
+                    <div className="col p-2 col-home mt-4 me-1 col-grafics align-self-center justify-self-center">
+                        <h4>Lugares onde você usou até agora</h4>
                     </div>
-
-                    <div className="row mb-2 align-items-center justify-content-center text-center">
-                        <div className="col-1">
-                            <FontAwesomeIcon icon={faCartShopping} />
-                        </div>
-                        <div className="col">
-                            <div className="progress">
-                                <div className="progress-bar" role="progressbar" style={{ width: "76%" }} aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="row mb-2 align-items-center justify-content-center text-center">
-                        <div className="col-1">
-                            <FontAwesomeIcon icon={faBriefcaseMedical} />
-                        </div>
-                        <div className="col">
-                            <div className="progress">
-                                <div className="progress-bar" role="progressbar" style={{ width: "52%" }} aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                        </div>
-                    </div>
-
                 </div>
                 <div className="col pb-2 pt-2 col-home mt-4 ms-1 col-calendar">
                     <h4>Escolha a data para filtrar</h4>
-                    <p>Escolha uma data para filtrar o gráfico ao lado. </p>
+                    <p>Escolha uma data para filtrar o gráfico ao lado.</p>
                     <Calendar />
                 </div>
             </div>
