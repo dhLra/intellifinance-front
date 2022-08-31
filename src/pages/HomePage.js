@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMoneyBillTransfer, faMoneyBill, faMoneyBillWave, faBurger, faCar, faCartShopping, faBriefcaseMedical } from "@fortawesome/free-solid-svg-icons";
 
-
+import Map from "../components/Map";
 import ExpenseCategory from "../components/ExpenseCategory";
 import Calendar from "../components/Calendar";
 import { getUserLocalStorage } from "../services/LoginService";
@@ -78,6 +78,8 @@ const HomePage = () => {
                     </div>
                     <div className="col p-2 col-home mt-4 me-1 col-grafics align-self-center justify-self-center">
                         <h4>Lugares onde você usou até agora</h4>
+                        <p>Veja os lugares onde você tem mais gastado.</p>
+                        <Map/>
                     </div>
                 </div>
                 <div className="col pb-2 pt-2 col-home mt-4 ms-1 col-calendar">
