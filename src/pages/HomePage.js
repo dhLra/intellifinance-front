@@ -77,15 +77,15 @@ const HomePage = () => {
                         <ExpenseCategory icon={faBriefcaseMedical} />
                     </div>
                     <div className="col p-2 col-home mt-4 me-1 col-grafics align-self-center justify-self-center">
-                        <h4>Lugares onde você usou até agora</h4>
-                        <p>Veja os lugares onde você tem mais gastado.</p>
-                        <Map/>
+                        <h4>Escolha a data para filtrar</h4>
+                        <p>Escolha uma data para filtrar o gráfico ao lado.</p>
+                        <Calendar />
                     </div>
                 </div>
                 <div className="col pb-2 pt-2 col-home mt-4 ms-1 col-calendar">
-                    <h4>Escolha a data para filtrar</h4>
-                    <p>Escolha uma data para filtrar o gráfico ao lado.</p>
-                    <Calendar />
+                    <h4>Lugares onde você usou até agora</h4>
+                    <p>Veja os lugares onde você tem mais gastado.</p>
+                    <Map />
                 </div>
             </div>
         </div>
