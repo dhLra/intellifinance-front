@@ -9,6 +9,7 @@ import { getUserLocalStorage } from "../services/LoginService";
 
 import { useForm } from "react-hook-form";
 import { getModalData } from "../services/GetModalData";
+import { removeFixedExpense } from "../services/RemoveFixedExpense";
 
 
 const ModalComponent = (props) => {
@@ -39,6 +40,11 @@ const ModalComponent = (props) => {
             e.expendNumber,
             e.monthStart,
             e.monthEnd)
+    }
+
+    const RemoveFixedExpense = (e) => {
+        removeFixedExpense(userData.token,
+            e.Expend)
     }
 
     const render = () => {
@@ -150,18 +156,9 @@ const ModalComponent = (props) => {
                                         <label htmlFor="exampleFormControlInput1" className="form-label">Quantidade das parcelas</label>
                                         <select className="form-select form-select" aria-label=".form-select-sm example" {...register("expendNumber")}>
                                             <option selected>Selecione a quantidade de parcelas</option>
-                                            <option value="1">1</option>
-                                            <option value="2">2</option>
-                                            <option value="3">3</option>
-                                            <option value="4">4</option>
-                                            <option value="5">5</option>
-                                            <option value="6">6</option>
-                                            <option value="7">7</option>
-                                            <option value="8">8</option>
-                                            <option value="9">9</option>
-                                            <option value="10">10</option>
-                                            <option value="11">11</option>
-                                            <option value="12">12</option>
+                                            {data.month.map((data, key) => {
+                                                return <option key={key} value={data.id_month}>{data.id_month}</option>
+                                            })}
                                         </select>
                                     </div>
                                 </div>
@@ -174,18 +171,9 @@ const ModalComponent = (props) => {
                                         <label htmlFor="exampleFormControlInput1" className="form-label">Inicio das parcelas</label>
                                         <select className="form-select form-select" aria-label=".form-select-sm example" {...register("monthStart")}>
                                             <option selected>Selecione o mês de Inicio</option>
-                                            <option value="1">Janeiro</option>
-                                            <option value="2">Fevereiro</option>
-                                            <option value="3">Março</option>
-                                            <option value="4">Abril</option>
-                                            <option value="5">Maio</option>
-                                            <option value="6">Junho</option>
-                                            <option value="7">Julho</option>
-                                            <option value="8">Agosto</option>
-                                            <option value="9">Setembro</option>
-                                            <option value="10">Outubro</option>
-                                            <option value="11">Novembro</option>
-                                            <option value="12">Dezembro</option>
+                                            {data.month.map((data, key) => {
+                                                return <option key={key} value={data.id_month}>{data.name}</option>
+                                            })}
                                         </select>
                                     </div>
                                 </div>
@@ -194,18 +182,9 @@ const ModalComponent = (props) => {
                                         <label htmlFor="exampleFormControlInput1" className="form-label">Fim das parcelas</label>
                                         <select className="form-select form-select" aria-label=".form-select-sm example" {...register("monthEnd")}>
                                             <option selected>Selecione o mês de Termino</option>
-                                            <option value="1">Janeiro</option>
-                                            <option value="2">Fevereiro</option>
-                                            <option value="3">Março</option>
-                                            <option value="4">Abril</option>
-                                            <option value="5">Maio</option>
-                                            <option value="6">Junho</option>
-                                            <option value="7">Julho</option>
-                                            <option value="8">Agosto</option>
-                                            <option value="9">Setembro</option>
-                                            <option value="10">Outubro</option>
-                                            <option value="11">Novembro</option>
-                                            <option value="12">Dezembro</option>
+                                            {data.month.map((data, key) => {
+                                                return <option key={key} value={data.id_month}>{data.name}</option>
+                                            })}
                                         </select>
                                     </div>
                                 </div>
@@ -234,16 +213,23 @@ const ModalComponent = (props) => {
                             Remover Despesa Mensal
                         </Modal.Title>
                     </Modal.Header>
-                    <Modal.Body>
-                        <div className="mb-3">
-                            <label htmlFor="exampleFormControlInput1" className="form-label">Digite o valor a ser retirado</label>
-                            <input type="text" className="form-control" />
-                        </div>
-                    </Modal.Body>
-                    <Modal.Footer>
-                        <Button onClick={() => { console.log('Enviou') }}>Enviar</Button>
-                        <Button onClick={props.onHide}>Cancelar</Button>
-                    </Modal.Footer>
+                    <Form onSubmit={handleSubmit(RemoveFixedExpense)}>
+                        <Modal.Body>
+                            <div className="mb-3">
+                                <label htmlFor="exampleFormControlInput1" className="form-label">Digite o valor a ser retirado</label>
+                                <select className="form-select form-select" aria-label=".form-select-sm example" {...register("Expend")}>
+                                    <option selected>Selecione o mês de Termino</option>
+                                    {data.expense.map((data, key) => {
+                                        return <option key={key} value={data.id_expend}>{data.factor}</option>
+                                    })}
+                                </select>
+                            </div>
+                        </Modal.Body>
+                        <Modal.Footer>
+                            <Button  type="submit" onClick={props.onHide}>Enviar</Button>
+                            <Button onClick={props.onHide}>Cancelar</Button>
+                        </Modal.Footer>
+                    </Form>
                 </Modal>
             )
 
