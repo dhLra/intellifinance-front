@@ -27,7 +27,7 @@ const LateralMenu = (props) => {
                 <LateralMenuButton icon={faFileExport} buttonLabel="Importar CSV" />
 
                 <LateralMenuDivision title="Configurações" />
-                <LateralMenuButton icon={faGear} buttonLabel="Configurações de dispesas" />
+                <LateralMenuButton icon={faGear} buttonLabel="Configurações de dispesas" param="userConfig"/>
 
             </div>
         </div>

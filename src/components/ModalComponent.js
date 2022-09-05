@@ -226,7 +226,47 @@ const ModalComponent = (props) => {
                             </div>
                         </Modal.Body>
                         <Modal.Footer>
-                            <Button  type="submit" onClick={props.onHide}>Enviar</Button>
+                            <Button type="submit" onClick={props.onHide}>Enviar</Button>
+                            <Button onClick={props.onHide}>Cancelar</Button>
+                        </Modal.Footer>
+                    </Form>
+                </Modal>
+            )
+
+        } else if (props.type === 'userConfig') {
+
+            return (
+                <Modal
+                    {...props}
+                    size="lg"
+                    aria-labelledby="contained-modal-title-vcenter"
+                    centered
+                >
+                    <Modal.Header closeButton>
+                        <Modal.Title id="contained-modal-title-vcenter">
+                            Configurações do Usuário
+                        </Modal.Title>
+                    </Modal.Header>
+                    <Form onSubmit={handleSubmit(RemoveFixedExpense)}>
+                        <Modal.Body>
+                            <div className="row">
+                                <div className="col">
+                                    <div className="mb-3">
+                                        <label htmlFor="exampleFormControlInput1" className="form-label">Nome do Usuário</label>
+                                        <input type="text" class="form-control" value={userData.name} {...register("userName")}/>
+                                    </div>
+                                </div>
+
+                                <div className="col">
+                                    <div className="mb-3">
+                                        <label htmlFor="exampleFormControlInput1" className="form-label">Teto de gastos (Em R$)</label>
+                                        <input type="text" class="form-control" {...register("userMaxExpense")}/>
+                                    </div>
+                                </div>
+                            </div>
+                        </Modal.Body>
+                        <Modal.Footer>
+                            <Button type="submit" onClick={props.onHide}>Enviar</Button>
                             <Button onClick={props.onHide}>Cancelar</Button>
                         </Modal.Footer>
                     </Form>

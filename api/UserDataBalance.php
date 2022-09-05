@@ -22,7 +22,7 @@ class UserDataBalace extends Conn
             $DataUserAmount = $this->connBD()->prepare("SELECT * FROM user_amount WHERE id_user = '$paramUserID'");
             $DataUserAmount->execute();
 
-            $DataUserExpense = $this->connBD()->prepare("SELECT * FROM user_expense WHERE id_user = '$paramUserID'");
+            $DataUserExpense = $this->connBD()->prepare("SELECT * FROM user_expense WHERE id_user = '$paramUserID' AND situation != 'DISABLED'");
             $DataUserExpense->execute();
 
             while ($FetchExpense = $DataUserExpense->fetch(PDO::FETCH_ASSOC)) {
