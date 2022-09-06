@@ -18,7 +18,11 @@ const LateralMenu = (props) => {
                 <LateralMenuButton icon={faCirclePlus} buttonLabel="Adicionar Saldo" param="addCredit" />
                 <LateralMenuButton icon={faCircleMinus} buttonLabel="Retirar Saldo" param="removeCredit" />
 
-                <LateralMenuDivision title="Dispesas" />
+                <LateralMenuDivision title="Dispesas Pontuais" />
+                <LateralMenuButton icon={faCirclePlus} buttonLabel="Adicionar Dispesa Pontual"  />
+                <LateralMenuButton icon={faCircleMinus} buttonLabel="Retirar Dispesa Pontual"  />
+
+                <LateralMenuDivision title="Dispesas Fixas" />
                 <LateralMenuButton icon={faCirclePlus} buttonLabel="Adicionar Dispesa Mensal" param="addSpend" />
                 <LateralMenuButton icon={faCircleMinus} buttonLabel="Retirar Dispesa Mensal" param="removeSpend" />
 

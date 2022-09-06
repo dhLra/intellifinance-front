@@ -2,7 +2,7 @@
     background-color: #006aee;
     z-index: 1;
     position: absolute;
-    height: 100vh;
+    height: auto;
     width: 285px;
     color: #fff
 }
