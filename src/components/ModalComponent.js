@@ -6,6 +6,7 @@ import { addBalance } from "../services/AddBalanceService";
 import { removeBalance } from "../services/RemoveBalanceService";
 import { addFixedExpense } from "../services/AddFixedExpenseService";
 import { getUserLocalStorage } from "../services/LoginService";
+import { addOneOffExpense } from "../services/AddOneOffExpenseService";
 
 import { useForm } from "react-hook-form";
 import { getModalData } from "../services/GetModalData";
@@ -32,6 +33,24 @@ const ModalComponent = (props) => {
     const Remove = (e) => {
         removeBalance(userData.token, e.amount)
     }
+
+    const AddOneOffExpense = (e) => {
+        addOneOffExpense(
+            userData.token,
+            e.street,
+            e.number,
+            e.district,
+            e.city,
+            e.date,
+            e.establishment,
+            e.amount,
+            e.category
+        )
+    }
+
+    const RemoveOneOffExpense = (e) => {
+
+    }
     const AddFixedExpense = (e) => {
         addFixedExpense(userData.token,
             e.factor,
@@ -45,6 +64,10 @@ const ModalComponent = (props) => {
     const RemoveFixedExpense = (e) => {
         removeFixedExpense(userData.token,
             e.Expend)
+    }
+
+    const UserConfig = (e) => {
+
     }
 
     const render = () => {
@@ -94,6 +117,124 @@ const ModalComponent = (props) => {
                                 <label htmlFor="exampleFormControlInput1" className="form-label mb-0">Digite o valor a ser retirado</label>
                                 <p className="mt-1 "><small>Disponível: {data.current_amount} </small></p>
                                 <input type="text" className="form-control" {...register("amount")} />
+                            </div>
+                        </Modal.Body>
+                        <Modal.Footer>
+                            <Button type="submit" onClick={props.onHide}>Enviar</Button>
+                            <Button onClick={props.onHide}>Cancelar</Button>
+                        </Modal.Footer>
+                    </Form>
+                </Modal>
+            )
+
+        } else if (props.type === 'addOneOffExpense') {
+            return (
+                <Modal
+                    {...props}
+                    size="lg"
+                    aria-labelledby="contained-modal-title-vcenter"
+                    centered
+                >
+                    <Modal.Header closeButton>
+                        <Modal.Title id="contained-modal-title-vcenter">
+                            Adicionar gasto pontual
+                        </Modal.Title>
+                    </Modal.Header>
+                    <Form onSubmit={handleSubmit(AddOneOffExpense)}>
+                        <Modal.Body>
+                            <div className="row">
+                                <div className="col-9">
+                                    <div className="mb-3">
+                                        <label htmlFor="exampleFormControlInput1" className="form-label">Rua</label>
+                                        <input type="text" class="form-control"  {...register("street")} placeholder="Ex: Av. Brasil" />
+                                    </div>
+                                </div>
+
+                                <div className="col">
+                                    <div className="mb-3">
+                                        <label htmlFor="exampleFormControlInput1" className="form-label">Numero</label>
+                                        <input type="text" class="form-control"  {...register("number")} placeholder="Ex: 243" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="row">
+                                <div className="col">
+                                    <div className="mb-3">
+                                        <label htmlFor="exampleFormControlInput1" className="form-label">Bairro</label>
+                                        <input type="text" class="form-control" {...register("district")} placeholder="Ex: Boa vista" />
+                                    </div>
+                                </div>
+                                <div className="col">
+                                    <div className="mb-3">
+                                        <label htmlFor="exampleFormControlInput1" className="form-label">Cidade</label>
+                                        <input type="text" class="form-control"  {...register("city")} placeholder="Ex: Caruaru" />
+                                    </div>
+                                </div>
+                                <div className="col">
+                                    <div className="mb-3">
+                                        <label htmlFor="exampleFormControlInput1" className="form-label">Data</label>
+                                        <input type="text" class="form-control"  {...register("date")} placeholder="2022-06-26" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="row">
+                                <div className="col-9">
+                                    <div className="mb-3">
+                                        <label htmlFor="exampleFormControlInput1" className="form-label">Nome do Estabelecimento</label>
+                                        <input type="text" class="form-control" {...register("establishment")} placeholder="Ex: Shopping" />
+                                    </div>
+                                </div>
+                                <div className="col">
+                                    <label htmlFor="exampleFormControlInput1" className="form-label">Valor</label>
+                                    <div className="input-group mb-3">
+                                        <span className="input-group-text">R$</span>
+                                        <input type="text" className="form-control" aria-label="Amount (to the nearest dollar)" {...register("amount")} />
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="row">
+                                <div className="col-6">
+                                    <div className="mb-3">
+                                        <label htmlFor="exampleFormControlInput1" className="form-label">Selecionar categoria da dispesa</label>
+                                        <select className="form-select form-select" aria-label=".form-select-sm example" {...register("category")}>
+                                            <option selected>Selecione a categoria</option>
+                                            <option value="1">Alimentação</option>
+                                            <option value="2">Transporte</option>
+                                            <option value="3">Medicamentos</option>
+                                            <option value="4">Lazer</option>
+                                            <option value="5">Mercado</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </Modal.Body>
+                        <Modal.Footer>
+                            <Button type="submit" onClick={props.onHide}>Enviar</Button>
+                            <Button onClick={props.onHide}>Cancelar</Button>
+                        </Modal.Footer>
+                    </Form>
+                </Modal>
+            )
+
+        } else if (props.type === 'RemoveOneOffExpense') {
+            return (
+                <Modal
+                    {...props}
+                    size="lg"
+                    aria-labelledby="contained-modal-title-vcenter"
+                    centered
+                >
+                    <Modal.Header closeButton>
+                        <Modal.Title id="contained-modal-title-vcenter">
+                            Remover gasto pontual
+                        </Modal.Title>
+                    </Modal.Header>
+                    <Form onSubmit={handleSubmit(RemoveOneOffExpense)}>
+                        <Modal.Body>
+                            <div className="mb-3">
+                                <label htmlFor="exampleFormControlInput1" className="form-label mb-0">Selecione o gasto a ser removido</label>
+                                <select className="form-select form-select" aria-label=".form-select-sm example" {...register("category")}>
+                                </select>
                             </div>
                         </Modal.Body>
                         <Modal.Footer>
@@ -247,20 +388,20 @@ const ModalComponent = (props) => {
                             Configurações do Usuário
                         </Modal.Title>
                     </Modal.Header>
-                    <Form onSubmit={handleSubmit(RemoveFixedExpense)}>
+                    <Form onSubmit={handleSubmit(UserConfig)}>
                         <Modal.Body>
                             <div className="row">
                                 <div className="col">
                                     <div className="mb-3">
                                         <label htmlFor="exampleFormControlInput1" className="form-label">Nome do Usuário</label>
-                                        <input type="text" class="form-control" value={userData.name} {...register("userName")}/>
+                                        <input type="text" class="form-control" value={userData.name} {...register("userName")} />
                                     </div>
                                 </div>
 
                                 <div className="col">
                                     <div className="mb-3">
                                         <label htmlFor="exampleFormControlInput1" className="form-label">Teto de gastos (Em R$)</label>
-                                        <input type="text" class="form-control" {...register("userMaxExpense")}/>
+                                        <input type="text" class="form-control" {...register("userMaxExpense")} />
                                     </div>
                                 </div>
                             </div>
