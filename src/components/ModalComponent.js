@@ -7,7 +7,6 @@ import { removeBalance } from "../services/RemoveBalanceService";
 import { addFixedExpense } from "../services/AddFixedExpenseService";
 import { getUserLocalStorage } from "../services/LoginService";
 import { addOneOffExpense } from "../services/AddOneOffExpenseService";
-import { removeOneOffExpense } from "../services/RemoveOneOffExpenseService";
 
 import { useForm } from "react-hook-form";
 import { getModalData } from "../services/GetModalData";
@@ -22,7 +21,6 @@ const ModalComponent = (props) => {
 
     useEffect(() => {
         getModalData(userData.token).then((res) => {
-            console.log(res.data)
             setData(res)
         })
     }, [])
@@ -51,7 +49,7 @@ const ModalComponent = (props) => {
     }
 
     const RemoveOneOffExpense = (e) => {
-        removeOneOffExpense(userData.token, e.expenseID)
+
     }
     const AddFixedExpense = (e) => {
         addFixedExpense(userData.token,
@@ -235,11 +233,7 @@ const ModalComponent = (props) => {
                         <Modal.Body>
                             <div className="mb-3">
                                 <label htmlFor="exampleFormControlInput1" className="form-label mb-0">Selecione o gasto a ser removido</label>
-                                <select className="form-select form-select" aria-label=".form-select-sm example" {...register("expenseID")}>
-                                    <option selected>Selecione a categoria</option>
-                                    {data.oneoffexpense.map((data, key) => {
-                                                return <option key={key} value={data.id_expend}>{data.establishment}</option>
-                                            })}
+                                <select className="form-select form-select" aria-label=".form-select-sm example" {...register("category")}>
                                 </select>
                             </div>
                         </Modal.Body>

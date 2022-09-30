@@ -32,7 +32,6 @@ const Calendar = () => {
         })
     }, [])
 
-
     const render = () => {
         if (isLoaded) {
             return (
