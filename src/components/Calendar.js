@@ -40,6 +40,14 @@ const Calendar = () => {
 
     }
 
+   const allEvents = () => {
+        let events = calendarData.map( (item) => {
+           return {title:item.amount, date:item.expense_date}
+        })
+        console.log(events)
+        return events
+    }
+
     useEffect(() => {
         getCalendarData(userData.token).then((res) => {
             setCalendarData(res)
@@ -54,8 +62,8 @@ const Calendar = () => {
                     <FullCalendar
                         plugins={[dayGridPlugin, interactionPlugin]}
                         initialView="dayGridMonth"
-                        weekends={false}
-                        events={[{ title: calendarData[0].amount, date: calendarData[0].expense_date }]}
+                        weekends={true}
+                        events={allEvents()}
                         dateClick={handleShow} />
 
                     <Modal show={show} onHide={handleClose} size="lg">
