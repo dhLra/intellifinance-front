@@ -19,10 +19,25 @@ const Calendar = () => {
     const [show, setShow] = useState(false);
     const [date, setDate] = useState()
 
+
     const handleClose = () => setShow(false);
     const handleShow = (arg) => {
         setShow(true);
         setDate(arg.dateStr)
+    }
+
+    const fullAmount = (date) => {
+
+            var amount = 0
+            var itemAmount = 0
+            calendarData.filter(item => item.expense_date === date)
+            .map((item) => {
+                amount = parseInt(amount, 10)
+                itemAmount = parseInt(item.amount, 10)
+                return amount = amount + itemAmount
+            })
+            return amount
+
     }
 
     useEffect(() => {
@@ -40,7 +55,7 @@ const Calendar = () => {
                         plugins={[dayGridPlugin, interactionPlugin]}
                         initialView="dayGridMonth"
                         weekends={false}
-                        events= {[ {title: calendarData[0].amount, date: calendarData[0].expense_date} ]}
+                        events={[{ title: calendarData[0].amount, date: calendarData[0].expense_date }]}
                         dateClick={handleShow} />
 
                     <Modal show={show} onHide={handleClose} size="lg">
@@ -48,30 +63,33 @@ const Calendar = () => {
                             <Modal.Title>Relatório de Gastos</Modal.Title>
                         </Modal.Header>
                         <Modal.Body>
-                            <h5>Total Gasto: R$ 000</h5>
+                            <h5>Total Gasto: R$ {fullAmount(date)}</h5>
                             <hr></hr>
-                            <div className="row">
-                                <div className="col">
-                                    <div className="mb-3">
-                                        <label htmlFor="exampleFormControlInput1" className="form-label">Local do Gasto</label>
-                                        <input type="text" class="form-control" disabled />
-                                    </div>
-                                </div>
-                                <div className="col-3">
-                                    <div className="mb-3">
-                                        <label htmlFor="exampleFormControlInput1" className="form-label">Data (AA-MM-DD)</label>
-                                        <input type="text" class="form-control" disabled value={date} />
-                                    </div>
-                                </div>
+                            {calendarData.filter(item => item.expense_date === date).map((item) => {
+                                return (<>
+                                    <div className="row">
+                                        <div className="col">
+                                            <div className="mb-3">
+                                                <label htmlFor="exampleFormControlInput1" className="form-label">Local do Gasto</label>
+                                                <input type="text" class="form-control" disabled value={item.establishment} />
+                                            </div>
+                                        </div>
+                                        <div className="col-3">
+                                            <div className="mb-3">
+                                                <label htmlFor="exampleFormControlInput1" className="form-label">Data (AA-MM-DD)</label>
+                                                <input type="text" class="form-control" disabled value={item.expense_date} />
+                                            </div>
+                                        </div>
 
-                                <div className="col-3">
-                                    <div className="mb-3">
-                                        <label htmlFor="exampleFormControlInput1" className="form-label">Valor R$</label>
-                                        <input type="text" class="form-control" disabled />
+                                        <div className="col-3">
+                                            <div className="mb-3">
+                                                <label htmlFor="exampleFormControlInput1" className="form-label">Valor R$</label>
+                                                <input type="text" class="form-control" disabled value={item.amount} />
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                            </div>
-
+                                </>)
+                            })}
                         </Modal.Body>
                         <Modal.Footer>
                             <Button onClick={handleClose}>

@@ -30,7 +30,7 @@ class CalendarData extends Conn
                     "district" => $Data['district'],
                     "city" => $Data['city'],
                     "establishment" => $Data['establishment'],
-                    "amount" => $Data['amount'],
+                    "amount" => number_format($Data['amount']),
                     "id_category" => $Data['id_category'],
                     "expense_date" => $Data['expense_date']
                 ];
