@@ -19,19 +19,19 @@ const LateralMenu = (props) => {
                 <LateralMenuButton icon={faCircleMinus} buttonLabel="Retirar Saldo" param="removeCredit" />
 
                 <LateralMenuDivision title="Dispesas Pontuais" />
-                <LateralMenuButton icon={faCirclePlus} buttonLabel="Adicionar Dispesa Pontual" param="addOneOffExpense" />
-                <LateralMenuButton icon={faCircleMinus} buttonLabel="Retirar Dispesa Pontual" param="RemoveOneOffExpense" />
+                <LateralMenuButton icon={faCirclePlus} buttonLabel="Adicionar Despesa Pontual" param="addOneOffExpense" />
+                <LateralMenuButton icon={faCircleMinus} buttonLabel="Retirar Despesa Pontual" param="RemoveOneOffExpense" />
 
                 <LateralMenuDivision title="Dispesas Fixas" />
-                <LateralMenuButton icon={faCirclePlus} buttonLabel="Adicionar Dispesa Mensal" param="addSpend" />
-                <LateralMenuButton icon={faCircleMinus} buttonLabel="Retirar Dispesa Mensal" param="removeSpend" />
+                <LateralMenuButton icon={faCirclePlus} buttonLabel="Adicionar Despesa Mensal" param="addSpend" />
+                <LateralMenuButton icon={faCircleMinus} buttonLabel="Retirar Despesa Mensal" param="removeSpend" />
 
                 <LateralMenuDivision title="CSV" />
                 <LateralMenuButton icon={faFileImport} buttonLabel="Exportar CSV" />
                 <LateralMenuButton icon={faFileExport} buttonLabel="Importar CSV" />
 
                 <LateralMenuDivision title="Configurações" />
-                <LateralMenuButton icon={faGear} buttonLabel="Configurações de dispesas" param="userConfig"/>
+                <LateralMenuButton icon={faGear} buttonLabel="Configurações do Usuário" param="userConfig"/>
 
             </div>
         </div>
