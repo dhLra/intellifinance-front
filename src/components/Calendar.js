@@ -44,7 +44,7 @@ const Calendar = () => {
         let events = calendarData.map( (item) => {
            return {title:item.amount, date:item.expense_date}
         })
-        console.log(events)
+        //console.log(events)
         return events
     }
 

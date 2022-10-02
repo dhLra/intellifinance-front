@@ -13,6 +13,5 @@ export const getCalendarData  = async (userID) => {
         }
     })
     const calendarData = res.data;
-    console.log(calendarData[0].city)
     return(calendarData);
 }
