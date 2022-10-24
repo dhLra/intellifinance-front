@@ -4,6 +4,8 @@ import { AuthProvider } from "./services/AuthProvider";
 import ProtectedLayout from "./components/Layouts/ProtectedLayout";
 
 import LoginPage from "./pages/LoginPage";
+import RetriveAccountPage from "./pages/RetriveAccountPage";
+import ResetPassowrdPage from "./pages/ResetPasswordPage";
 import HomePage from "./pages/HomePage";
 import MapPage from "./pages/MapPage";
 import Layout from "./components/Layouts/Layout";
@@ -18,6 +20,8 @@ function App() {
             <Route path="*" element={<LoginPage />} />
 
             <Route path="/login" exact element={<LoginPage />} />
+            <Route path="/retrive-account" exact element={<RetriveAccountPage />} />
+            <Route path="/reset-password" exact element={<ResetPassowrdPage />} />
 
             <Route path="/home" element={
               <ProtectedLayout>
