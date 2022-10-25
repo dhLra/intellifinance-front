@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 
@@ -7,10 +7,17 @@ import '../style/css/login.css';
 const LoginPage = () => {
 
     const { register, handleSubmit } = useForm();
+    const [error, setError] = useState('');
     const navigate = useNavigate();
 
     const onSubmit = async (e) => {
-        navigate('/reset-password');
+        //const res = await getUserExists(e.email)
+        const res = true
+        if (res) {
+            navigate('/reset-password')
+        } else {
+            setError('Não foi possivel encontrar o seu endereço de email')
+        }
         /*  try {
               
           } catch (error) {
@@ -24,14 +31,17 @@ const LoginPage = () => {
                 <div className="row row-retrive-account">
                     <div className="d-flex flex-column justify-content-center">
                         <form onSubmit={handleSubmit(onSubmit)}>
-                            <div className="mb-5 row justify-content-center align-items-center text-center ">
-                                <div className="mt-5 align-items-center justify-content-center">
+                            <div className="row justify-content-center align-items-center text-center ">
+                                <div className="mt-2 mb-2 align-items-center justify-content-center">
                                     <h4>Vamos localizar sua conta</h4>
                                 </div>
                                 <hr></hr>
-                                <label>Digite o email para recuperar a senha:</label>
-                                <div className="col-sm-10 mt-2">
+                                <div className="col-sm-10 ">
+                                    <label>Digite o email para recuperar a senha:</label>
                                     <input type="email" className="form-control" placeholder="exemple@email.com" {...register("email")} />
+                                </div>
+                                <div className="row h-25">
+                                <p>{error}</p>
                                 </div>
                             </div>
                             <div className="mb-3 row">
