@@ -6,10 +6,10 @@ import { faMoneyBillTransfer, faMoneyBill, faMoneyBillWave, faBurger, faCar, faC
 import Map from "../components/Map";
 import ExpenseCategory from "../components/ExpenseCategory";
 import Calendar from "../components/Calendar";
-import { getUserLocalStorage } from "../services/LoginService";
+import { getUserLocalStorage } from "../services/LoginService/LoginService";
 
 import '../style/css/home.css';
-import { getUserDataBalance } from "../services/GetUserDataBalance";
+import { getUserDataBalance } from "../services/UserDataService/GetUserDataBalance";
 
 const HomePage = () => {
 

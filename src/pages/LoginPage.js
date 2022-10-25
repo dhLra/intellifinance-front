@@ -7,7 +7,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser, faLock, faArrowRightLong } from "@fortawesome/free-solid-svg-icons";
 
 import logo from "../style/img/logo.svg"
-import { useAuth } from "../services/useAuth";
+import { useAuth } from "../services/LoginService/useAuth";
 
 import '../style/css/login.css';
 

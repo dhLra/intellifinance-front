@@ -1,6 +1,6 @@
 import React from "react";
 import { useLocation, Navigate } from "react-router-dom";
-import { useAuth } from "../../services/useAuth";
+import { useAuth } from "../../services/LoginService/useAuth";
 
 
 const ProtectedLayout = ({ children }) => {

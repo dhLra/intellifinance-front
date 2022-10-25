@@ -1,6 +1,6 @@
 import React from "react";
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
-import { AuthProvider } from "./services/AuthProvider";
+import { AuthProvider } from "./services/LoginService/AuthProvider";
 import ProtectedLayout from "./components/Layouts/ProtectedLayout";
 
 import LoginPage from "./pages/LoginPage";

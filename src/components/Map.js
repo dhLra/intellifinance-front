@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { GoogleMap, Marker, useJsApiLoader } from '@react-google-maps/api';
-import { getMapData } from '../services/GetMapData';
-import { getUserLocalStorage } from "../services/LoginService";
+import { getMapData } from '../services/MapService/GetMapData';
+import { getUserLocalStorage } from "../services/LoginService/LoginService";
 
 const containerStyle = {
   width: '100wv',

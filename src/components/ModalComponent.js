@@ -2,15 +2,15 @@ import React, { useEffect, useState } from "react";
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { Form } from "react-bootstrap";
-import { addBalance } from "../services/AddBalanceService";
-import { removeBalance } from "../services/RemoveBalanceService";
-import { addFixedExpense } from "../services/AddFixedExpenseService";
-import { getUserLocalStorage } from "../services/LoginService";
-import { addOneOffExpense } from "../services/AddOneOffExpenseService";
+import { addBalance } from "../services/BalanceService/AddBalanceService";
+import { removeBalance } from "../services/BalanceService/RemoveBalanceService";
+import { addFixedExpense } from "../services/FixedExpenseService/AddFixedExpenseService";
+import { getUserLocalStorage } from "../services/LoginService/LoginService";
+import { addOneOffExpense } from "../services/OneOffExpenseService/AddOneOffExpenseService";
 
 import { useForm } from "react-hook-form";
-import { getModalData } from "../services/GetModalData";
-import { removeFixedExpense } from "../services/RemoveFixedExpense";
+import { getModalData } from "../services/ModalService/GetModalData";
+import { removeFixedExpense } from "../services/FixedExpenseService/RemoveFixedExpense";
 
 
 const ModalComponent = (props) => {

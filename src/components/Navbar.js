@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser, faRightFromBracket, faSun, faAnglesRight } from "@fortawesome/free-solid-svg-icons";
 
-import { useAuth } from "../services/useAuth";
+import { useAuth } from "../services/LoginService/useAuth";
 import LateralMenu from "./LateralMenu";
 
 const Navbar = () => {

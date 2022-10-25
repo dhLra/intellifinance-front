@@ -3,8 +3,8 @@ import React, { useEffect, useState } from "react";
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 
-import { getUserLocalStorage } from "../services/LoginService";
-import { getCalendarData } from "../services/GetCalendarData";
+import { getUserLocalStorage } from "../services/LoginService/LoginService";
+import { getCalendarData } from "../services/CalendarService/GetCalendarData";
 
 import FullCalendar from '@fullcalendar/react' // must go before plugins
 import dayGridPlugin from '@fullcalendar/daygrid' // a plugin!
