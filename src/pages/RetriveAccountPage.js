@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
+import { getUserExistis } from "../services/RetriveAccountService/GetUserExists";
 
 import '../style/css/login.css';
 
@@ -11,9 +12,8 @@ const LoginPage = () => {
     const navigate = useNavigate();
 
     const onSubmit = async (e) => {
-        //const res = await getUserExists(e.email)
-        const res = true
-        if (res) {
+        const res = await getUserExistis(e.email)
+        if (res.existis) {
             navigate('/reset-password')
         } else {
             setError('Não foi possivel encontrar o seu endereço de email')

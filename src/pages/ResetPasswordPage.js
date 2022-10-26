@@ -1,21 +1,29 @@
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
+import { getResetPassword } from "../services/ResetPassword/ResetPasswordService";
 
 import '../style/css/login.css';
 
 const LoginPage = () => {
 
     const { register, handleSubmit } = useForm();
+    const [error, setError] = useState('');
     const navigate = useNavigate();
+    const json = localStorage.getItem('u');
 
     const onSubmit = async (e) => {
-        navigate('/login');
-        /*  try {
-              
-          } catch (error) {
-              return <h1>Senha ou Usuarios invalidos</h1>
-          }*/
+        if (e.s1 === e.s2) {
+            const res = await getResetPassword(json, e.s1)
+            console.log(res)
+            if (res === 200) {
+                navigate('/login')
+            } else {
+                setError('Algo aconteceu, por favor tente mais tarde')
+            }
+        } else {
+            setError('As duas senhas não são iguais')
+        }
     }
 
     return (
@@ -31,12 +39,14 @@ const LoginPage = () => {
                                 <hr></hr>
                                 <label className="reset-label">Digite sua nova senha:</label>
                                 <div className="col-sm-10 mt-2">
-                                    <input type="password" className="form-control" {...register("email")} />
+                                    <input type="password" className="form-control" {...register("s1")} />
                                 </div>
                                 <label className="reset-label mt-2">Digite novamente:</label>
                                 <div className="col-sm-10 mt-2">
-                                    <input type="password" className="form-control" {...register("email")} />
+                                    <input type="password" className="form-control" {...register("s2")} />
                                 </div>
+
+                                <p>{error}</p>
                             </div>
                             <div className="mb-3 row">
                                 <hr></hr>
