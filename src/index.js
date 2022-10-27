@@ -5,6 +5,7 @@ import App from './App';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './style/css/navbar.css';
 import './style/css/index.css';
+import './style/css/global.css';
 import './style/css/retrive-account.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
