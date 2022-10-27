@@ -76,8 +76,14 @@ const Map = () => {
                   </div>
                   <div className="col">
                     <div className="mb-3">
-                      <label htmlFor="exampleFormControlInput1" className="form-label">Local do Gasto</label>
+                      <label htmlFor="exampleFormControlInput1" className="form-label">Quantia gasta</label>
                       <input type="text" class="form-control" disabled value={'R$ '+ item.amount} />
+                    </div>
+                  </div>
+                  <div className="col">
+                    <div className="mb-3">
+                      <label htmlFor="exampleFormControlInput1" className="form-label">Data (AA-MM-DD)</label>
+                      <input type="text" class="form-control" disabled value={item.expense_date} />
                     </div>
                   </div>
                 </div>

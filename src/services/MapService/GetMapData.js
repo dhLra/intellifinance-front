@@ -18,7 +18,7 @@ export const getMapData = async (userID) => {
     }))
 
     const allData = allPoints.map((item, key) => {
-        return { address: res.data[key].address, address_number: res.data[key].address_number, establishment: res.data[key].establishment, amount:res.data[key].amount, lat: item.data.results[0].locations[0].latLng.lat, lng: item.data.results[0].locations[0].latLng.lng }
+        return { address: res.data[key].address, address_number: res.data[key].address_number, establishment: res.data[key].establishment, amount:res.data[key].amount, expense_date:res.data[key].expense_date, lat: item.data.results[0].locations[0].latLng.lat, lng: item.data.results[0].locations[0].latLng.lng }
     })
     return allData
 
