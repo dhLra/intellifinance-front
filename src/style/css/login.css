@@ -1,0 +1,15 @@
+.login-row{
+    width: 310px;
+    background-color: #fff;
+}
+
+.logo{
+    width: 165px
+}
+
+.credits{
+    z-index: 1;
+    position: absolute;
+    margin-top: 45%;
+    font-size: small
+}

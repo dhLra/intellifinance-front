@@ -30,10 +30,10 @@ const LoginPage = () => {
     return (
         <>
             <div className="bg-img">
-                <div className="row vh-100 w-25" style={{ backgroundColor: 'white' }}>
+                <div className="row login-row vh-100">
                     <div className="d-flex flex-column justify-content-center vh-100">
                         <div className="text-center mb-3">
-                            <img alt="logo" src={logo} style={{ width: '165px' }} />
+                            <img alt="logo" className="logo" src={logo} />
                         </div>
                         <form onSubmit={handleSubmit(onSubmit)}>
                             <div className="mb-3 row ">
@@ -61,7 +61,7 @@ const LoginPage = () => {
                             </div>
 
                         </form>
-                        <p className="align-self-center justify-self-end" style={{ zIndex: 1, position: 'absolute', marginTop: '45%', fontSize: 'small' }}>Powered By dhLra_</p>
+                        <p className="align-self-center justify-self-end credits">Powered By dhLra_</p>
                     </div>
                 </div>
             </div>
