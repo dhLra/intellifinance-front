@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { getResetPassword } from "../services/ResetPassword/ResetPasswordService";
+import { getUserLocalStorage } from "../services/LoginService/LoginService";
 
 import '../style/css/login.css';
 
@@ -10,12 +11,12 @@ const LoginPage = () => {
     const { register, handleSubmit } = useForm();
     const [error, setError] = useState('');
     const navigate = useNavigate();
-    const json = localStorage.getItem('u');
+    const userData = getUserLocalStorage()
 
     const onSubmit = async (e) => {
         if (e.s1 === e.s2) {
-            const res = await getResetPassword(json, e.s1)
-            console.log(res)
+            const res = await getResetPassword(userData.email, e.s1)
+            console.log(typeof userData.email)
             if (res === 200) {
                 navigate('/login')
             } else {

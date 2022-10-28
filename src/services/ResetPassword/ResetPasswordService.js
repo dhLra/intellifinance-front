@@ -4,6 +4,8 @@ const url = "http://localhost/intellifinance/api/GetResetPassword.php"
 
 export const getResetPassword = async (email, senha) => {
 
+    console.log(email)
+    console.log(senha)
     const res = await axios.post(url, {
         data: {
             email: email,

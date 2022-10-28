@@ -14,8 +14,8 @@ const LoginPage = () => {
 
     const onSubmit = async (e) => {
         if (e.s1 === e.s2) {
-            const res = await getResetPassword(json, e.s1)
-            console.log(res)
+            const newEmail = json.replace(/"/g, '');
+            const res = await getResetPassword(newEmail, e.s1)
             if (res === 200) {
                 navigate('/login')
             } else {

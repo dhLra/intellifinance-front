@@ -20,7 +20,7 @@ class ResetPassword extends Conn
 
             $PwdHash = password_hash($paramPwd, PASSWORD_DEFAULT);
 
-            $UserExistis = $this->connBD()->prepare("UPDATE user_table SET password_hash = '$PwdHash' WHERE email = $paramEmail");
+            $UserExistis = $this->connBD()->prepare("UPDATE user_table SET password_hash = '$PwdHash', is_frist_login = '0' WHERE email = '$paramEmail'");
             $UserExistis->execute();
 
             echo json_encode(http_response_code());

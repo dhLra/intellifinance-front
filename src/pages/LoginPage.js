@@ -9,6 +9,7 @@ import { faUser, faLock, faArrowRightLong } from "@fortawesome/free-solid-svg-ic
 import logo from "../style/img/logo.svg"
 import { useAuth } from "../services/LoginService/useAuth";
 
+
 import '../style/css/login.css';
 
 const LoginPage = () => {
