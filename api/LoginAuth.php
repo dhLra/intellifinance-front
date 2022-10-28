@@ -27,6 +27,7 @@ class LoginAuth extends Conn
                     "id_user" => $row_user['id_user'],
                     "name" => $row_user['name'],
                     "email" => $row_user['email'],
+                    "is_frist_login" => $row_user['is_frist_login'],
                     "status" => true,
                 ];
                 echo json_encode($userDataArray);
