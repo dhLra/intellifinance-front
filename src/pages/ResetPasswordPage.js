@@ -13,7 +13,9 @@ const LoginPage = () => {
     const json = localStorage.getItem('u');
 
     const onSubmit = async (e) => {
-        if (e.s1 === e.s2) {
+        if (e.s1 !== e.s2 || e.s1 === '' || e.s2 === '') {
+            setError('As duas senhas não são iguais')
+        } else {
             const newEmail = json.replace(/"/g, '');
             const res = await getResetPassword(newEmail, e.s1)
             if (res === 200) {
@@ -21,8 +23,6 @@ const LoginPage = () => {
             } else {
                 setError('Algo aconteceu, por favor tente mais tarde')
             }
-        } else {
-            setError('As duas senhas não são iguais')
         }
     }
 
@@ -46,7 +46,9 @@ const LoginPage = () => {
                                     <input type="password" className="form-control" {...register("s2")} />
                                 </div>
 
-                                <p>{error}</p>
+                                <div className="text-center d-flex justify-content-center align-items-center">
+                                    <label style={{ color: 'red', fontSize: '14px' }}>{error}</label>
+                                </div>
                             </div>
                             <div className="mb-3 row">
                                 <hr></hr>

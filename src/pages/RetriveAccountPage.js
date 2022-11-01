@@ -36,13 +36,14 @@ const LoginPage = () => {
                                     <h4>Vamos localizar sua conta</h4>
                                 </div>
                                 <hr></hr>
-                                <div className="col-sm-10 ">
+                                <div className="col-sm-10 mb-2">
                                     <label>Digite o email para recuperar a senha:</label>
-                                    <input type="email" className="form-control" placeholder="exemple@email.com" {...register("email")} />
+                                    <input type="email" className="form-control mt-2" placeholder="exemple@email.com" {...register("email")} />
                                 </div>
-                                <div className="row h-25">
-                                <p>{error}</p>
+                                <div className="text-center d-flex justify-content-center align-items-center">
+                                    <label style={{ color: 'red', fontSize: '14px' }}>{error}</label>
                                 </div>
+
                             </div>
                             <div className="mb-3 row">
                                 <hr></hr>

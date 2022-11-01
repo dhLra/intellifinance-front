@@ -274,11 +274,11 @@ const ModalComponent = (props) => {
                                         <label htmlFor="exampleFormControlInput1" className="form-label">Selecionar categoria da dispesa</label>
                                         <select className="form-select form-select" aria-label=".form-select-sm example" {...register("category")}>
                                             <option selected>Selecione a categoria da dispesa</option>
-                                            <option value="Alimentação">Alimentação</option>
-                                            <option value="Transporte">Transporte</option>
-                                            <option value="Medicamentos">Medicamentos</option>
-                                            <option value="Lazer">Lazer</option>
-                                            <option value="Mercado">Mercado</option>
+                                            <option value="1">Alimentação</option>
+                                            <option value="2">Transporte</option>
+                                            <option value="3">Medicamentos</option>
+                                            <option value="4">Lazer</option>
+                                            <option value="5">Mercado</option>
                                         </select>
                                     </div>
                                 </div>

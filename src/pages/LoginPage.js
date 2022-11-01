@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 
@@ -9,7 +9,6 @@ import { faUser, faLock, faArrowRightLong } from "@fortawesome/free-solid-svg-ic
 import logo from "../style/img/logo.svg"
 import { useAuth } from "../services/LoginService/useAuth";
 
-
 import '../style/css/login.css';
 
 const LoginPage = () => {
@@ -17,13 +16,14 @@ const LoginPage = () => {
     const auth = useAuth()
 
     const { register, handleSubmit } = useForm();
+    const [error, setError] = useState('')
     const navigate = useNavigate();
 
     const onSubmit = async (e) => {
         try {
             await auth.authenticate(e.email, e.password)
         } catch (error) {
-            return <h1>Senha ou Usuarios invalidos</h1>
+           setError('Login ou senhas invalidos')
         }
         navigate('/home');
     }
@@ -54,6 +54,13 @@ const LoginPage = () => {
                                     <button type="submit" className="btn btn-primary"><FontAwesomeIcon icon={faArrowRightLong} /></button>
                                 </div>
                             </div>
+
+                            <div className="mb-3 row">
+                                <div className="col-sm text-center">
+                                    <p>{error}</p>
+                                </div>
+                            </div>
+
 
                             <div className="mb-3 row">
                                 <div className="col-sm d-flex justify-content-center">

@@ -99,10 +99,10 @@ const HomePage = () => {
                                 <div className="col p-2 col-home mt-4 me-1 col-grafics align-self-center justify-self-center">
                                     <h4>Como você usou até agora</h4>
                                     <p>O gráfico é referente ao período 22/08/2022.</p>
-                                    <ExpenseCategory icon={faBurger} />
-                                    <ExpenseCategory icon={faCar} />
-                                    <ExpenseCategory icon={faCartShopping} />
-                                    <ExpenseCategory icon={faBriefcaseMedical} />
+                                    <ExpenseCategory icon={faBurger} type='Alimentação' />
+                                    <ExpenseCategory icon={faCar} type='Transporte'/>
+                                    <ExpenseCategory icon={faCartShopping} type='Mercado'/>
+                                    <ExpenseCategory icon={faBriefcaseMedical} type='Medicamento'/>
                                 </div>
                                 <div className="col p-2 col-home mt-4 me-1 col-grafics align-self-center justify-self-center">
                                     <h4>Escolha a data para filtrar</h4>

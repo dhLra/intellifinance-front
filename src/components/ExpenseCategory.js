@@ -1,7 +1,20 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
+import { getUserLocalStorage } from "../services/LoginService/LoginService";
+import { getCategory } from "../services/CategoryService/GetCategoryService";
+
 const ExpenseCategory = (props) => {
+
+    const userData = getUserLocalStorage();
+    const [categoryData, setCategoryData] = useState([])
+
+    useEffect(() => {
+        getCategory(userData.token).then((res) => {
+            setCategoryData(res)
+        })
+    }, [])
+
     return (
         <>
             <div className="row mb-2 align-items-center justify-content-center text-center">

@@ -24,8 +24,8 @@ class AddFixedExpend extends Conn
 
         try {
 
-            $Movimentation = $this->connBD()->prepare("INSERT INTO user_expense (`id_user`,`factor`, `category`, `installments_value`, `installments_number`, `installments_start`, `installments_end`, `date`) 
-            VAlUES ('$paramUserID', '$paramFactor', '$paramCaterogy', '$paramAmount', '$paramExpendNumber', '$paramMonthStart', '$paramMonthEnd', '$paramDate')");
+            $Movimentation = $this->connBD()->prepare("INSERT INTO user_expense (`id_user`,`factor`, `category`, `installments_value`, `installments_number`, `installments_start`, `installments_end`, `date_add`, `date_remove`, `situation`) 
+            VAlUES ('$paramUserID', '$paramFactor', '$paramCaterogy', '$paramAmount', '$paramExpendNumber', '$paramMonthStart', '$paramMonthEnd', '$paramDate', NULL, 'ACTIVE')");
             $Movimentation->execute();
 
             echo json_encode('Sucsses');

@@ -14,16 +14,16 @@ const LoginPage = () => {
     const userData = getUserLocalStorage()
 
     const onSubmit = async (e) => {
-        if (e.s1 === e.s2) {
+        console.log(e.s1)
+        if (e.s1 !== e.s2 || e.s1 === '' || e.s2 === '') {
+            setError('As duas senhas não são iguais ou estão vazias')
+        } else {
             const res = await getResetPassword(userData.email, e.s1)
-            console.log(typeof userData.email)
             if (res === 200) {
                 navigate('/login')
             } else {
                 setError('Algo aconteceu, por favor tente mais tarde')
             }
-        } else {
-            setError('As duas senhas não são iguais')
         }
     }
 
@@ -47,7 +47,9 @@ const LoginPage = () => {
                                     <input type="password" className="form-control" {...register("s2")} />
                                 </div>
 
-                                <p>{error}</p>
+                                <div className="text-center d-flex justify-content-center align-items-center">
+                                    <label style={{ color: 'red', fontSize: '14px' }}>{error}</label>
+                                </div>
                             </div>
                             <div className="mb-3 row">
                                 <hr></hr>
