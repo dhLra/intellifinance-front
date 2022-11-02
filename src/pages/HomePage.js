@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMoneyBillTransfer, faMoneyBill, faMoneyBillWave, faBurger, faCar, faCartShopping, faBriefcaseMedical } from "@fortawesome/free-solid-svg-icons";
+import { faMoneyBillTransfer, faMoneyBill, faMoneyBillWave, faBurger, faCar, faCartShopping, faBriefcaseMedical, faGamepad } from "@fortawesome/free-solid-svg-icons";
 
 import Map from "../components/Map";
 import ExpenseCategory from "../components/ExpenseCategory";
@@ -99,10 +99,11 @@ const HomePage = () => {
                                 <div className="col p-2 col-home mt-4 me-1 col-grafics align-self-center justify-self-center">
                                     <h4>Como você usou até agora</h4>
                                     <p>O gráfico é referente ao período 22/08/2022.</p>
-                                    <ExpenseCategory icon={faBurger} type='Alimentação' />
-                                    <ExpenseCategory icon={faCar} type='Transporte'/>
-                                    <ExpenseCategory icon={faCartShopping} type='Mercado'/>
-                                    <ExpenseCategory icon={faBriefcaseMedical} type='Medicamento'/>
+                                    <ExpenseCategory icon={faBurger} type={0} />
+                                    <ExpenseCategory icon={faCar} type={1} />
+                                    <ExpenseCategory icon={faBriefcaseMedical} type={2} />
+                                    <ExpenseCategory icon={faCartShopping} type={3} />
+                                    <ExpenseCategory icon={faGamepad} type={4} />
                                 </div>
                                 <div className="col p-2 col-home mt-4 me-1 col-grafics align-self-center justify-self-center">
                                     <h4>Escolha a data para filtrar</h4>

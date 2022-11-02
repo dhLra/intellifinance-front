@@ -4,7 +4,8 @@ const url = "http://localhost/intellifinance/api/GetCategoryData.php"
 
 export const getCategory  = async (userID) => {
 
-    const res = await axios.get(url, {
+    console.log(userID)
+    const res = await axios.post(url, {
         data:{
             id_user: userID,
         },
