@@ -13,9 +13,10 @@ class AddOneOffExpense extends Conn
         $dataObject = json_decode(file_get_contents('php://input'), true);
 
         $paramUserID = $dataObject['data']['id_user'];
-        $paramStreet = $dataObject['data']['street'];
-        $paramNumber = $dataObject['data']['number'];
+        $paramAddress = $dataObject['data']['address'];
+        $paramAddressNumber = $dataObject['data']['address_number'];
         $paramDistrict = $dataObject['data']['district'];
+        $paramFederalState = $dataObject['data']['federal_state'];
         $paramCity = $dataObject['data']['city'];
         $paramDate = $dataObject['data']['date'];
         $paramEstablisment = $dataObject['data']['establishment'];
@@ -25,8 +26,8 @@ class AddOneOffExpense extends Conn
 
         try {
 
-            $OneOffExpense = $this->connBD()->prepare("INSERT INTO user_one_off_expense (`id_user`,`address`, `address_number`, `district`, `city`, `establishment`, `amount`, `id_category`, `expense_date`) 
-            VAlUES ('$paramUserID', '$paramStreet', '$paramNumber', '$paramDistrict', '$paramCity', '$paramEstablisment', '$paramAmount', '$paramCategory','$paramDate')");
+            $OneOffExpense = $this->connBD()->prepare("INSERT INTO user_one_off_expense (`id_user`,`address`, `address_number`, `district`, `city`, `federal_state`, `establishment`, `amount`, `id_category`, `expense_date`, `situation`) 
+            VAlUES ('$paramUserID', '$paramAddress', '$paramAddressNumber', '$paramDistrict', '$paramCity', '$paramFederalState', '$paramEstablisment', '$paramAmount', '$paramCategory','$paramDate', 'ACTIVE')");
             $OneOffExpense->execute();
 
             echo json_encode('Sucsses');

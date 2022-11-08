@@ -32,7 +32,7 @@ class ModalData extends Conn
                 $ArrayExpense[$Index] = [
                     "id_expend" => $AllDataExpense['id_expend'],
                     "factor" => $AllDataExpense['factor'],
-                    "category" => $AllDataExpense['category'],
+                    "category" => $AllDataExpense['id_category'],
                     "installments_value" => $AllDataExpense['installments_value'],
                     "installments_number" => $AllDataExpense['installments_number'],
                     "installments_start" => $AllDataExpense['installments_start'],

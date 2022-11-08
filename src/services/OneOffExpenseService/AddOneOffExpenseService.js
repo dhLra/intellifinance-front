@@ -2,13 +2,13 @@ import axios from "axios";
 
 const url = "http://localhost/intellifinance/api/PostOneOffExpense.php"
 
-export const addOneOffExpense  = async (userID, street, number, district, city, date, establishment, amount, category ) => {
+export const addOneOffExpense  = async (userID, address, address_number, district, city, date, establishment, amount, category ) => {
 
     const res = await axios.post(url, {
         data:{
             id_user: userID,
-            street: street,
-            number: number,
+            address: address,
+            address_number: address_number,
             district: district,
             city: city,
             date: date,

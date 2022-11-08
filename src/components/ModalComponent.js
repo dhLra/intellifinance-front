@@ -22,6 +22,7 @@ const ModalComponent = (props) => {
     useEffect(() => {
         getModalData(userData.token).then((res) => {
             setData(res)
+            console.log(res.data)
         })
     }, [])
 
@@ -37,10 +38,11 @@ const ModalComponent = (props) => {
     const AddOneOffExpense = (e) => {
         addOneOffExpense(
             userData.token,
-            e.street,
-            e.number,
+            e.address,
+            e.address_number,
             e.district,
             e.city,
+            e.federal_state,
             e.date,
             e.establishment,
             e.amount,
@@ -146,14 +148,14 @@ const ModalComponent = (props) => {
                                 <div className="col-9">
                                     <div className="mb-3">
                                         <label htmlFor="exampleFormControlInput1" className="form-label">Rua</label>
-                                        <input type="text" class="form-control"  {...register("street")} placeholder="Ex: Av. Brasil" />
+                                        <input type="text" class="form-control"  {...register("address")} placeholder="Ex: Av. Brasil" />
                                     </div>
                                 </div>
 
                                 <div className="col">
                                     <div className="mb-3">
                                         <label htmlFor="exampleFormControlInput1" className="form-label">Numero</label>
-                                        <input type="text" class="form-control"  {...register("number")} placeholder="Ex: 243" />
+                                        <input type="text" class="form-control"  {...register("address_number")} placeholder="Ex: 243" />
                                     </div>
                                 </div>
                             </div>
@@ -168,6 +170,12 @@ const ModalComponent = (props) => {
                                     <div className="mb-3">
                                         <label htmlFor="exampleFormControlInput1" className="form-label">Cidade</label>
                                         <input type="text" class="form-control"  {...register("city")} placeholder="Ex: Caruaru" />
+                                    </div>
+                                </div>
+                                <div className="col">
+                                    <div className="mb-3">
+                                        <label htmlFor="exampleFormControlInput1" className="form-label">Estado</label>
+                                        <input type="text" class="form-control"  {...register("federal_state")} placeholder="Ex: PE" />
                                     </div>
                                 </div>
                                 <div className="col">
@@ -305,7 +313,6 @@ const ModalComponent = (props) => {
                                 </div>
                             </div>
 
-
                             <div className="row">
                                 <div className="col">
                                     <div className="mb-3">
@@ -313,7 +320,7 @@ const ModalComponent = (props) => {
                                         <select className="form-select form-select" aria-label=".form-select-sm example" {...register("monthStart")}>
                                             <option selected>Selecione o mês de Inicio</option>
                                             {data.month.map((data, key) => {
-                                                return <option key={key} value={data.id_month}>{data.name}</option>
+                                                return <option key={key} value={data.id_month}>{data.id_month}</option>
                                             })}
                                         </select>
                                     </div>
@@ -324,7 +331,7 @@ const ModalComponent = (props) => {
                                         <select className="form-select form-select" aria-label=".form-select-sm example" {...register("monthEnd")}>
                                             <option selected>Selecione o mês de Termino</option>
                                             {data.month.map((data, key) => {
-                                                return <option key={key} value={data.id_month}>{data.name}</option>
+                                                return <option key={key} value={data.id_month}>{data.id_month}</option>
                                             })}
                                         </select>
                                     </div>

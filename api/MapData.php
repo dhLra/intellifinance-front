@@ -16,7 +16,7 @@ class MapData extends Conn
 
         try {
 
-            $CalendarData = $this->connBD()->prepare("SELECT * FROM user_one_off_expense WHERE id_user = '$paramUserID'");
+            $CalendarData = $this->connBD()->prepare("SELECT * FROM user_one_off_expense WHERE id_user = '$paramUserID' AND situation = 'ACTIVE'");
             $CalendarData->execute();
 
             $ArrayData = [];
