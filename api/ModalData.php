@@ -44,6 +44,27 @@ class ModalData extends Conn
 
             $Index = 0;
 
+
+            $DataExpense = $this->connBD()->prepare("SELECT * FROM user_one_off_expense WHERE id_user = '$paramUserID' AND situation != 'DISABLED'");
+            $DataExpense->execute();
+
+            while ($AllDataOneOffExpense = $DataExpense->fetch(PDO::FETCH_ASSOC)) {
+                $ArrayOneOffExpense[$Index] = [
+                    "id_amount" => $AllDataOneOffExpense['id_amount'],
+                    "address" => $AllDataOneOffExpense['address'],
+                    "address_number" => $AllDataOneOffExpense['address_number'],
+                    "district" => $AllDataOneOffExpense['district'],
+                    "city" => $AllDataOneOffExpense['city'],
+                    "federal_state" => $AllDataOneOffExpense['federal_state'],
+                    "establishment" => $AllDataOneOffExpense['establishment'],
+                    "amount" => $AllDataOneOffExpense['amount'],
+                    "expense_date" => $AllDataOneOffExpense['expense_date'],
+                ];
+                $Index++;
+            }
+
+            $Index = 0;
+
             $DataMonth = $this->connBD()->prepare("SELECT * FROM table_month ");
             $DataMonth->execute();
 
@@ -57,6 +78,7 @@ class ModalData extends Conn
             $dataModal = [
                 "current_amount" => number_format($DataBalance['current_amount'], 2),
                 "expense" => $ArrayExpense,
+                "oneoffexpense" => $ArrayOneOffExpense,
                 "month" => $ArrayMonth,
                 "status" => '200'
             ];

@@ -7,6 +7,8 @@ import { removeBalance } from "../services/BalanceService/RemoveBalanceService";
 import { addFixedExpense } from "../services/FixedExpenseService/AddFixedExpenseService";
 import { getUserLocalStorage } from "../services/LoginService/LoginService";
 import { addOneOffExpense } from "../services/OneOffExpenseService/AddOneOffExpenseService";
+import { removeOneOffExpense } from "../services/OneOffExpenseService/RemoveOneOffExpenseService";
+import { postUserConfig } from "../services/UserConfigService/PostUserConfig";
 
 import { useForm } from "react-hook-form";
 import { getModalData } from "../services/ModalService/GetModalData";
@@ -51,7 +53,7 @@ const ModalComponent = (props) => {
     }
 
     const RemoveOneOffExpense = (e) => {
-
+        removeOneOffExpense(userData.token, e.Expend)
     }
     const AddFixedExpense = (e) => {
         addFixedExpense(userData.token,
@@ -69,7 +71,7 @@ const ModalComponent = (props) => {
     }
 
     const UserConfig = (e) => {
-
+        postUserConfig(userData.token, e.userName)
     }
 
     const render = () => {
@@ -241,7 +243,11 @@ const ModalComponent = (props) => {
                         <Modal.Body>
                             <div className="mb-3">
                                 <label htmlFor="exampleFormControlInput1" className="form-label mb-0">Selecione o gasto a ser removido</label>
-                                <select className="form-select form-select" aria-label=".form-select-sm example" {...register("category")}>
+                                <select className="form-select form-select" aria-label=".form-select-sm example" {...register("Expend")}>
+                                    <option selected>Selecione o gasto a ser removido</option>
+                                    {data.oneoffexpense.map((data, key) => {
+                                        return <option key={key} value={data.id_amount}>{data.expense_date} - R${data.amount} - {data.establishment}</option>
+                                    })}
                                 </select>
                             </div>
                         </Modal.Body>
@@ -364,9 +370,9 @@ const ModalComponent = (props) => {
                     <Form onSubmit={handleSubmit(RemoveFixedExpense)}>
                         <Modal.Body>
                             <div className="mb-3">
-                                <label htmlFor="exampleFormControlInput1" className="form-label">Digite o valor a ser retirado</label>
+                                <label htmlFor="exampleFormControlInput1" className="form-label">Digite o despese a ser retirado</label>
                                 <select className="form-select form-select" aria-label=".form-select-sm example" {...register("Expend")}>
-                                    <option selected>Selecione o mês de Termino</option>
+                                    <option selected>Selecione a despesa</option>
                                     {data.expense.map((data, key) => {
                                         return <option key={key} value={data.id_expend}>{data.factor}</option>
                                     })}
@@ -401,16 +407,16 @@ const ModalComponent = (props) => {
                                 <div className="col">
                                     <div className="mb-3">
                                         <label htmlFor="exampleFormControlInput1" className="form-label">Nome do Usuário</label>
-                                        <input type="text" class="form-control" value={userData.name} {...register("userName")} />
+                                        <input type="text" class="form-control" {...register("userName")} />
                                     </div>
                                 </div>
 
-                                <div className="col">
+                                {/**<div className="col">
                                     <div className="mb-3">
                                         <label htmlFor="exampleFormControlInput1" className="form-label">Teto de gastos (Em R$)</label>
                                         <input type="text" class="form-control" {...register("userMaxExpense")} />
                                     </div>
-                                </div>
+                                </div> */}
                             </div>
                         </Modal.Body>
                         <Modal.Footer>

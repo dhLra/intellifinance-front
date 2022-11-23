@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUser, faRightFromBracket, faSun, faAnglesRight } from "@fortawesome/free-solid-svg-icons";
+import { faUser, faRightFromBracket, faAnglesRight } from "@fortawesome/free-solid-svg-icons";
 
 import { useAuth } from "../services/LoginService/useAuth";
 import LateralMenu from "./LateralMenu";
@@ -37,11 +37,11 @@ const Navbar = () => {
                                     <FontAwesomeIcon icon={faUser} transform="grow-1" />
                                 </a>
                             </li>
-                            <li className="nav-item ">
+                            {/*<li className="nav-item ">
                                 <a href="https://www.facebook.com/fbrdigital/" className="nav-link" >
                                     <FontAwesomeIcon icon={faSun} transform="grow-1" />
                                 </a>
-                            </li>
+                            </li>*/}
                             <li className="mt-2 me-1 ms-1">
                                 <p>|</p>
                             </li>
