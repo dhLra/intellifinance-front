@@ -1,5 +1,5 @@
 import React from "react";
-import { faCirclePlus, faCircleMinus, faFileImport, faFileExport, faGear} from "@fortawesome/free-solid-svg-icons";
+import { faCirclePlus, faCircleMinus, faGear} from "@fortawesome/free-solid-svg-icons";
 
 import LateralMenuButton from "./LateralMenuButton";
 import LateralMenuDivision from "./LateralMenuDivision";
@@ -26,9 +26,10 @@ const LateralMenu = (props) => {
                 <LateralMenuButton icon={faCirclePlus} buttonLabel="Adicionar Despesa Mensal" param="addSpend" />
                 <LateralMenuButton icon={faCircleMinus} buttonLabel="Retirar Despesa Mensal" param="removeSpend" />
 
-                <LateralMenuDivision title="CSV" />
+                {/* <LateralMenuDivision title="CSV" />
                 <LateralMenuButton icon={faFileImport} buttonLabel="Exportar CSV" />
-                <LateralMenuButton icon={faFileExport} buttonLabel="Importar CSV" />
+                <LateralMenuButton icon={faFileExport} buttonLabel="Importar CSV" />*/}
+               
 
                 <LateralMenuDivision title="Configurações" />
                 <LateralMenuButton icon={faGear} buttonLabel="Configurações do Usuário" param="userConfig"/>

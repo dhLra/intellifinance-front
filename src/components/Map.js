@@ -40,7 +40,8 @@ const Map = () => {
 
   const { isLoaded } = useJsApiLoader({
     id: 'google-map-script',
-    googleMapsApiKey: "AIzaSyCYtgBaWn_gy5CWbM0xdZeUlE62qnmvsyw"
+   // googleMapsApiKey: "AIzaSyCYtgBaWn_gy5CWbM0xdZeUlE62qnmvsyw"
+    googleMapsApiKey: "AIzaSyCs-ZxvCoAVLrCAzZFgAuFMK6NnoCs3AN8"
   })
 
 
